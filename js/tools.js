@@ -31,73 +31,6 @@ var availableCities = [
             }
         });
 
-        // выравнивание блоков в каталоге по высоте
-        $('.catalogue').each(function() {
-            var curBlock = $(this);
-            curBlock.find('.catalogue-item:nth-child(4n)').each(function() {
-                var curItem   = $(this);
-                var curIndex  = curBlock.find('.catalogue-item').index(curItem);
-                var prevItem  = curBlock.find('.catalogue-item').eq(curIndex - 1);
-                var firstItem = curBlock.find('.catalogue-item').eq(curIndex - 2);
-                var zeroItem  = curBlock.find('.catalogue-item').eq(curIndex - 3);
-
-                var curHeight = curItem.find('.catalogue-item-text').height();
-
-                if (prevItem.find('.catalogue-item-text').height() > curHeight) {
-                    curHeight = prevItem.find('.catalogue-item-text').height();
-                }
-
-                if (firstItem.find('.catalogue-item-text').height() > curHeight) {
-                    curHeight = firstItem.find('.catalogue-item-text').height();
-                }
-
-                if (zeroItem.find('.catalogue-item-text').height() > curHeight) {
-                    curHeight = zeroItem.find('.catalogue-item-text').height();
-                }
-
-                curItem.find('.catalogue-item-text').height(curHeight);
-                prevItem.find('.catalogue-item-text').height(curHeight);
-                firstItem.find('.catalogue-item-text').height(curHeight);
-                zeroItem.find('.catalogue-item-text').height(curHeight);
-            });
-
-            if (curBlock.find('.catalogue-item').length % 4 == 3) {
-                var curItem   = curBlock.find('.catalogue-item:last');
-                var curIndex  = curBlock.find('.catalogue-item').index(curItem);
-                var prevItem  = curBlock.find('.catalogue-item').eq(curIndex - 1);
-                var firstItem = curBlock.find('.catalogue-item').eq(curIndex - 2);
-
-                var curHeight = curItem.find('.catalogue-item-text').height();
-
-                if (prevItem.find('.catalogue-item-text').height() > curHeight) {
-                    curHeight = prevItem.find('.catalogue-item-text').height();
-                }
-
-                if (firstItem.find('.catalogue-item-text').height() > curHeight) {
-                    curHeight = firstItem.find('.catalogue-item-text').height();
-                }
-
-                curItem.find('.catalogue-item-text').height(curHeight);
-                prevItem.find('.catalogue-item-text').height(curHeight);
-                firstItem.find('.catalogue-item-text').height(curHeight);
-            }
-
-            if (curBlock.find('.catalogue-item').length % 4 == 2) {
-                var curItem   = curBlock.find('.catalogue-item:last');
-                var curIndex  = curBlock.find('.catalogue-item').index(curItem);
-                var prevItem  = curBlock.find('.catalogue-item').eq(curIndex - 1);
-
-                var curHeight = curItem.find('.catalogue-item-text').height();
-
-                if (prevItem.find('.catalogue-item-text').height() > curHeight) {
-                    curHeight = prevItem.find('.catalogue-item-text').height();
-                }
-
-                curItem.find('.catalogue-item-text').height(curHeight);
-                prevItem.find('.catalogue-item-text').height(curHeight);
-            }
-        });
-
         // пример открытия окна при нажатии на фото на странице продукта
         $('.product-side .catalogue-item-photo a, .product-side .catalogue-item-name a').click(function() {
             windowOpen($('.product-window').html());
@@ -202,8 +135,26 @@ var availableCities = [
         $('.order-user-row-link-forgot').click(function() {
             windowOpen($('.window-email').html());
 
-            $('.window-email-cancel a').bind('click', function() {
+            $('.window .window-email-cancel a').bind('click', function() {
                 windowClose();
+                return false;
+            });
+
+            $('.window .window-email-error-link a').bind('click', function() {
+                windowClose();
+                return false;
+            });
+
+            $('.window .window-email-form form').bind('submit', function() {
+                if ($('.window .window-email-input input').val() == 'ivanova.inna@yundex.ru') {
+                    $('.window .window-email-form').hide();
+                    $('.window .window-email-success span').html($('.window .window-email-input input').val());
+                    $('.window .window-email-success').show();
+                } else {
+                    $('.window .window-email-form').hide();
+                    $('.window .window-email-error-text span').html($('.window .window-email-input input').val());
+                    $('.window .window-email-error').show();
+                }
                 return false;
             });
 
@@ -215,79 +166,81 @@ var availableCities = [
             $(this).css({'margin-top': -($(this).height() + 15) / 2});
         });
 
-        $('.order-form form').validate({
-            messages: {
-                name: 'Это обязательное поле!',
-                email: 'Это обязательное поле!',
-                city: 'Это обязательное поле!',
-                address: 'Вы забыли указать адрес!<br />Куда доставить ваш заказ?'
-            },
-            invalidHandler: function(form, validator) {
-                validator.showErrors();
-                if ($('.order-form form .error:first').length > 0) {
-                    $('.order-form-steps').data('scrollAnimation', true);
-                    $.scrollTo('.order-form form .error:visible:first', {offset: {'top': -92}, duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
-                }
-            },
-            submitHandler: function(form) {
-                var curStep = $('.order-steps li').index($('.order-steps li.curr'));
-                switch(curStep) {
-                    case 0:
-                        $('.order-steps li').removeClass('curr');
-                        $('.order-steps li').eq(0).addClass('prev');
-                        $('.order-steps li').eq(1).addClass('prev curr');
-                        $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-delivery').html() + '</div>');
-                        $('.order-form form input[name="city"]').autocomplete({
-                            source: availableCities,
-                            change: function(event, ui) {
-                                if ($('.order-form form .order-form-group-delivery-list').length > 0) {
-                                    if ($('.order-form form input[name="city"]').val() == 'Москва') {
-                                        $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-moscow .order-form-group-delivery-list').html());
+        $('.order-form').each(function() {
+            $('.order-form form').validate({
+                messages: {
+                    name: 'Это обязательное поле!',
+                    email: 'Это обязательное поле!',
+                    city: 'Это обязательное поле!',
+                    address: 'Вы забыли указать адрес!<br />Куда доставить ваш заказ?'
+                },
+                invalidHandler: function(form, validator) {
+                    validator.showErrors();
+                    if ($('.order-form form .error:first').length > 0) {
+                        $('.order-form-steps').data('scrollAnimation', true);
+                        $.scrollTo('.order-form form .error:visible:first', {offset: {'top': -92}, duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
+                    }
+                },
+                submitHandler: function(form) {
+                    var curStep = $('.order-steps li').index($('.order-steps li.curr'));
+                    switch(curStep) {
+                        case 0:
+                            $('.order-steps li').removeClass('curr');
+                            $('.order-steps li').eq(0).addClass('prev');
+                            $('.order-steps li').eq(1).addClass('prev curr');
+                            $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-delivery').html() + '</div>');
+                            $('.order-form form input[name="city"]').autocomplete({
+                                source: availableCities,
+                                change: function(event, ui) {
+                                    if ($('.order-form form .order-form-group-delivery-list').length > 0) {
+                                        if ($('.order-form form input[name="city"]').val() == 'Москва') {
+                                            $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-moscow .order-form-group-delivery-list').html());
+                                        } else {
+                                            $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-other .order-form-group-delivery-list').html());
+                                        }
                                     } else {
-                                        $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-other .order-form-group-delivery-list').html());
+                                        if ($('.order-form form input[name="city"]').val() == 'Москва') {
+                                            $('.order-form form .order-form-group:last').append($('#order-form-delivery-moscow').html());
+                                        } else {
+                                            $('.order-form form .order-form-group:last').append($('#order-form-delivery-other').html());
+                                        }
+                                        $('.order-form form .order-form-group-delivery-list').slideDown();
                                     }
-                                } else {
-                                    if ($('.order-form form input[name="city"]').val() == 'Москва') {
-                                        $('.order-form form .order-form-group:last').append($('#order-form-delivery-moscow').html());
-                                    } else {
-                                        $('.order-form form .order-form-group:last').append($('#order-form-delivery-other').html());
-                                    }
-                                    $('.order-form form .order-form-group-delivery-list').slideDown();
                                 }
-                            }
-                        });
-                        $('.order-form-next').prev().slideDown(function() {
-                            $('.order-form-steps').data('scrollAnimation', true);
-                            $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
-                        });
-                        break;
-                    case 1:
-                        $('.order-steps li').removeClass('curr');
-                        $('.order-steps li').eq(1).addClass('prev');
-                        $('.order-steps li').eq(2).addClass('prev curr');
-                        $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-pay').html() + '</div>');
-                        $('.order-form-next').prev().find('.order-form-group-delivery-list').css({'display': 'block'});
-                        $('.order-form-next').prev().slideDown(function() {
-                            $('.order-form-steps').data('scrollAnimation', true);
-                            $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
-                        });
-                        break;
-                    case 2:
-                        $('.order-steps li').removeClass('curr');
-                        $('.order-steps li').eq(2).addClass('prev');
-                        $('.order-steps li').eq(3).addClass('prev curr');
-                        $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-confirm').html() + '</div>');
-                        $('.order-form-next').prev().slideDown(function() {
-                            $('.order-form-steps').data('scrollAnimation', true);
-                            $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
-                            $('.order-form-next').fadeOut(function() { $('.order-form-next').remove(); } );
-                        });
-                        break;
-                    case 3:
-                        form.submit();
-                        break;
+                            });
+                            $('.order-form-next').prev().slideDown(function() {
+                                $('.order-form-steps').data('scrollAnimation', true);
+                                $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
+                            });
+                            break;
+                        case 1:
+                            $('.order-steps li').removeClass('curr');
+                            $('.order-steps li').eq(1).addClass('prev');
+                            $('.order-steps li').eq(2).addClass('prev curr');
+                            $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-pay').html() + '</div>');
+                            $('.order-form-next').prev().find('.order-form-group-delivery-list').css({'display': 'block'});
+                            $('.order-form-next').prev().slideDown(function() {
+                                $('.order-form-steps').data('scrollAnimation', true);
+                                $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
+                            });
+                            break;
+                        case 2:
+                            $('.order-steps li').removeClass('curr');
+                            $('.order-steps li').eq(2).addClass('prev');
+                            $('.order-steps li').eq(3).addClass('prev curr');
+                            $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-confirm').html() + '</div>');
+                            $('.order-form-next').prev().slideDown(function() {
+                                $('.order-form-steps').data('scrollAnimation', true);
+                                $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
+                                $('.order-form-next').fadeOut(function() { $('.order-form-next').remove(); } );
+                            });
+                            break;
+                        case 3:
+                            form.submit();
+                            break;
+                    }
                 }
-            }
+            });
         });
 
         window.setInterval(function() {
@@ -331,6 +284,10 @@ var availableCities = [
                     $.scrollTo('.order-form form .order-form-group:eq(' + curIndex + ')', {offset: {'top': -92}, duration: speedScroll});
                 }
             });
+        }
+
+        if ($('.order-form').length == 0) {
+            $('.order-steps li div').css({'cursor': 'default'});
         }
 
     });
@@ -453,6 +410,75 @@ var availableCities = [
                 $('.side').css({'left': 'auto'});
             }
         }
+    });
+
+    // выравнивание блоков в каталоге по высоте
+    $(window).load(function() {
+        $('.catalogue').each(function() {
+            var curBlock = $(this);
+            curBlock.find('.catalogue-item:nth-child(4n)').each(function() {
+                var curItem   = $(this);
+                var curIndex  = curBlock.find('.catalogue-item').index(curItem);
+                var prevItem  = curBlock.find('.catalogue-item').eq(curIndex - 1);
+                var firstItem = curBlock.find('.catalogue-item').eq(curIndex - 2);
+                var zeroItem  = curBlock.find('.catalogue-item').eq(curIndex - 3);
+
+                var curHeight = curItem.find('.catalogue-item-text').height();
+
+                if (prevItem.find('.catalogue-item-text').height() > curHeight) {
+                    curHeight = prevItem.find('.catalogue-item-text').height();
+                }
+
+                if (firstItem.find('.catalogue-item-text').height() > curHeight) {
+                    curHeight = firstItem.find('.catalogue-item-text').height();
+                }
+
+                if (zeroItem.find('.catalogue-item-text').height() > curHeight) {
+                    curHeight = zeroItem.find('.catalogue-item-text').height();
+                }
+
+                curItem.find('.catalogue-item-text').height(curHeight);
+                prevItem.find('.catalogue-item-text').height(curHeight);
+                firstItem.find('.catalogue-item-text').height(curHeight);
+                zeroItem.find('.catalogue-item-text').height(curHeight);
+            });
+
+            if (curBlock.find('.catalogue-item').length % 4 == 3) {
+                var curItem   = curBlock.find('.catalogue-item:last');
+                var curIndex  = curBlock.find('.catalogue-item').index(curItem);
+                var prevItem  = curBlock.find('.catalogue-item').eq(curIndex - 1);
+                var firstItem = curBlock.find('.catalogue-item').eq(curIndex - 2);
+
+                var curHeight = curItem.find('.catalogue-item-text').height();
+
+                if (prevItem.find('.catalogue-item-text').height() > curHeight) {
+                    curHeight = prevItem.find('.catalogue-item-text').height();
+                }
+
+                if (firstItem.find('.catalogue-item-text').height() > curHeight) {
+                    curHeight = firstItem.find('.catalogue-item-text').height();
+                }
+
+                curItem.find('.catalogue-item-text').height(curHeight);
+                prevItem.find('.catalogue-item-text').height(curHeight);
+                firstItem.find('.catalogue-item-text').height(curHeight);
+            }
+
+            if (curBlock.find('.catalogue-item').length % 4 == 2) {
+                var curItem   = curBlock.find('.catalogue-item:last');
+                var curIndex  = curBlock.find('.catalogue-item').index(curItem);
+                var prevItem  = curBlock.find('.catalogue-item').eq(curIndex - 1);
+
+                var curHeight = curItem.find('.catalogue-item-text').height();
+
+                if (prevItem.find('.catalogue-item-text').height() > curHeight) {
+                    curHeight = prevItem.find('.catalogue-item-text').height();
+                }
+
+                curItem.find('.catalogue-item-text').height(curHeight);
+                prevItem.find('.catalogue-item-text').height(curHeight);
+            }
+        });
     });
 
 })(jQuery);
