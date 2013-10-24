@@ -1,5 +1,5 @@
 var speedSlider  = 500;     // скорость смены слайда на главной странице
-var periodSlider = 5000;    // период автоматической смены слайда на главной страницы ("0" - автоматическая смена отключена)
+var periodSlider = 2500;    // период автоматической смены слайда на главной страницы ("0" - автоматическая смена отключена)
 
 var timerSlider  = null;
 
@@ -30,6 +30,19 @@ var availableCities = [
                 timerSlider = window.setTimeout(sliderNext, periodSlider);
             }
         });
+
+        $('.slider').hover(
+            function() {
+                window.clearTimeout(timerSlider);
+                timerSlider = null;
+            },
+
+            function() {
+                if (periodSlider > 0) {
+                    timerSlider = window.setTimeout(sliderNext, periodSlider);
+                }
+            }
+        );
 
         // пример открытия окна при нажатии на фото на странице продукта
         $('.product-side .catalogue-item-photo a, .product-side .catalogue-item-name a').click(function() {
@@ -62,10 +75,27 @@ var availableCities = [
 
             $('.product-quick-form form').validate({
                 messages: {
+                    name: 'Это обязательное поле!',
                     phone: 'Это обязательное поле!'
                 }
             });
         }
+
+        // пример открытия окна при нажатии на "В корзину"
+        $('.catalogue-item-buy a').live('click', function() {
+            var curLink = $(this);
+            var curItem = curLink.parent().parent().parent();
+            if (!curLink.hasClass('incart')) {
+                var curText = curLink.attr('rel');
+                curLink.attr('rel', curLink.html());
+                curLink.html(curText);
+                curLink.addClass('incart');
+                if ($('.window').length == 0) {
+                    windowOpen($('.incart-window').html());
+                }
+            }
+            return false;
+        });
 
         // раскрытие корзины
         $('.header-cart-full').hover(
@@ -95,7 +125,11 @@ var availableCities = [
             curOption.addClass('active');
             curSelect.removeClass('cart-count-select-open');
             var curItem = curSelect.parents().filter('.cart-row');
-            curItem.find('.cart-cost span').html(Number(curItem.find('.cart-price span').html()) * Number(curOption.attr('rel')));
+            if (curItem.find('.cart-discount-value:visible').length == 1) {
+                curItem.find('.cart-cost span').eq(0).html((Number(curItem.find('.cart-price span').html()) - Number(curItem.find('.cart-discount-value span').html())) * Number(curOption.attr('rel')));
+            } else {
+                curItem.find('.cart-cost span').eq(0).html(Number(curItem.find('.cart-price span').html()) * Number(curOption.attr('rel')));
+            }
             recalcCost();
         });
 
@@ -188,26 +222,39 @@ var availableCities = [
                             $('.order-steps li').removeClass('curr');
                             $('.order-steps li').eq(0).addClass('prev');
                             $('.order-steps li').eq(1).addClass('prev curr');
-                            $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-delivery').html() + '</div>');
-                            $('.order-form form input[name="city"]').autocomplete({
-                                source: availableCities,
-                                change: function(event, ui) {
-                                    if ($('.order-form form .order-form-group-delivery-list').length > 0) {
-                                        if ($('.order-form form input[name="city"]').val() == 'Москва') {
-                                            $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-moscow .order-form-group-delivery-list').html());
-                                        } else {
-                                            $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-other .order-form-group-delivery-list').html());
-                                        }
-                                    } else {
-                                        if ($('.order-form form input[name="city"]').val() == 'Москва') {
-                                            $('.order-form form .order-form-group:last').append($('#order-form-delivery-moscow').html());
-                                        } else {
-                                            $('.order-form form .order-form-group:last').append($('#order-form-delivery-other').html());
-                                        }
-                                        $('.order-form form .order-form-group-delivery-list').slideDown();
-                                    }
+                            $('.order-form-next').before('<div class="order-form-group" style="display:none;">' + $('#order-form-delivery').html() + $('#order-form-delivery-moscow').html() + '</div>');
+
+                            $('.order-form form .order-form-select div').click(function() {
+                                $('.order-form-select-open').removeClass('order-form-select-open');
+                                $(this).parent().addClass('order-form-select-open');
+                            });
+
+                            $('.order-form-select ul li').click(function() {
+                                var curOption = $(this);
+                                var curSelect = curOption.parent().parent();
+                                curSelect.find('input').val(curOption.attr('rel'));
+                                curSelect.find('div').html(curOption.html());
+                                curSelect.find('li.active').removeClass('active');
+                                curOption.addClass('active');
+                                curSelect.removeClass('order-form-select-open');
+                                if (curOption.attr('rel') == 1) {
+                                    $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-moscow .order-form-group-delivery-list').html());
+                                } else {
+                                    $('.order-form form .order-form-group-delivery-list:first').html($('#order-form-delivery-other .order-form-group-delivery-list').html());
+                                }
+                                if (curOption.attr('rel') == 0) {
+                                    $('.order-form form .order-form-row-other').slideDown();
+                                } else {
+                                    $('.order-form form .order-form-row-other').slideUp();
                                 }
                             });
+
+                            $(document).click(function(e) {
+                                if ($(e.target).parents().filter('.order-form-select').length == 0) {
+                                    $('.order-form-select-open').removeClass('order-form-select-open');
+                                }
+                            });
+
                             $('.order-form-next').prev().slideDown(function() {
                                 $('.order-form-steps').data('scrollAnimation', true);
                                 $.scrollTo('.order-form form .order-form-group:last', {duration: speedScroll, onAfter: function() { $('.order-form-steps').data('scrollAnimation', false); }});
@@ -290,6 +337,78 @@ var availableCities = [
             $('.order-steps li div').css({'cursor': 'default'});
         }
 
+        // окно авторизации
+        $('.top-line-login a, .order-user-submit a').click(function() {
+            windowOpen($('.login-window').html());
+            return false;
+        });
+
+        $('.window .login-window-cancel a').live('click', function() {
+            windowClose();
+            return false;
+        });
+
+        $('.window .login-form-forgot-link a').live('click', function() {
+            $('.window .login-form-forgot').show();
+            recalcWindow();
+            return false;
+        });
+
+        $('.window .login-form-sms').live('click', function() {
+            if ($(this).parent().find('input').val() == '12FA') {
+                $('.window .login-form-forgot-valid').show();
+                recalcWindow();
+            }
+            return false;
+        });
+
+        // окно смены телефона
+        $('.window .login-form-right-phone a').live('click', function() {
+            windowClose();
+            windowOpen($('.phone-window').html());
+            return false;
+        });
+
+        $('input[name="phone"]').mask('8 (999) 999 99 99');
+
+        // купон
+        $('.cart-coupon-input input').focus(function() {
+            $('.cart-coupon-input label').css({'display': 'none'});
+        });
+
+        $('.cart-coupon-submit a').click(function() {
+            var curCoupon = $('.cart-coupon-input input').val();
+            if (curCoupon == 'DR-ERTC-JOWE') {
+                $('.cart-coupon-input .valid').css({'display': 'block'});
+                $('.cart-discount').each(function() {
+                    if ($(this).find('.cart-discount-value').length == 1) {
+                        $(this).find('span').eq(0).hide();
+                        $(this).find('.cart-discount-value').show();
+                        var curItem = $(this).parents().filter('.cart-row');
+                        if (curItem.find('.cart-discount-value:visible').length == 1) {
+                            curItem.find('.cart-cost span').eq(0).html((Number(curItem.find('.cart-price span').html()) - Number(curItem.find('.cart-discount-value span').html())) * Number(curItem.find('.cart-count input').val()));
+                        } else {
+                            curItem.find('.cart-cost span').eq(0).html(Number(curItem.find('.cart-price span').html()) * Number(curItem.find('.cart-count input').val()));
+                        }
+                    }
+                });
+                recalcCost();
+            } else {
+                $('.cart-coupon-input .error').css({'display': 'block'});
+            }
+            return false;
+        });
+
+        $('.news-load-link a').live('click', function() {
+            var curLink = $(this);
+            curLink.parent().before('<div class="news-load"></div>');
+            $('.news-load:last').load(curLink.attr('href'), function() {
+                $('.news-load:last').slideDown();
+                curLink.parent().remove();
+            });
+            return false;
+        });
+
     });
 
     // переход к следующему слайду
@@ -342,6 +461,8 @@ var availableCities = [
         });
 
         $('body').bind('keypress keydown', keyDownBody);
+
+        $('.window input[name="phone"]').mask('8 (999) 999 99 99');
     }
 
     // функция обновления позиции окна
@@ -383,7 +504,7 @@ var availableCities = [
         var curSumm = 0;
         var curCount = 0;
         $('.cart-row').each(function() {
-            if (!$(this).hasClass('cart-row-discount') && !$(this).hasClass('cart-row-gift')) {
+            if (!$(this).hasClass('cart-row-coupon') && !$(this).hasClass('cart-row-discount') && !$(this).hasClass('cart-row-gift')) {
                 curSumm += Number($(this).find('.cart-cost span').html());
                 curCount += Number($(this).find('.cart-count input').val());
             }

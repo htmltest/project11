@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/style.css" type="text/css" />
 
         <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
     </head>
 
@@ -13,6 +14,20 @@
 
         <!-- wrapper -->
         <div class="wrapper">
+
+            <!-- top line -->
+            <div class="top-line top-line-2">
+                <div class="top-line-inner">
+                    <div class="top-line-link"><a href="#">О Blumau</a></div>
+                    <div class="top-line-link"><a href="#">Доставка и оплата</a></div>
+
+                    <div class="top-line-logout"><a href="#">Выход</a></div>
+                    <div class="top-line-profile"><a href="#">Ваш личный кабинет</a></div>
+                    <div class="top-line-welcome">Здравствуйте, Юлия!</div>
+                </div>
+            </div>
+            <!-- top line END -->
+
             <div class="wrapper-inner">
 
                 <!-- header -->
@@ -43,7 +58,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"><span>1450 р.</span></td>
                                                         <td class="product-quick-item-cost">650 р.</td>
                                                     </tr>
                                                 </table>
@@ -59,7 +73,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">350 р.</td>
                                                     </tr>
                                                 </table>
@@ -75,7 +88,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">200 р.</td>
                                                     </tr>
                                                 </table>
@@ -91,7 +103,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">100 р.</td>
                                                     </tr>
                                                 </table>
@@ -145,8 +156,9 @@
                     <div class="cart-header-1">Продукт</div>
                     <div class="cart-header-2">Количество</div>
                     <div class="cart-header-3">Стоимость</div>
-                    <div class="cart-header-4">Общая стоимость</div>
-                    <div class="cart-header-5">Удалить</div>
+                    <div class="cart-header-4">Скидка</div>
+                    <div class="cart-header-5">Общая стоимость</div>
+                    <div class="cart-header-6">Удалить</div>
                 </div>
                 <!-- cart header END -->
 
@@ -182,8 +194,9 @@
                                 </div>
                                 <div class="cart-count-unit">шт.</div>
                             </div>
-                            <div class="cart-price"><span>250</span> р.</div>
-                            <div class="cart-cost"><span>500</span> р.</div>
+                            <div class="cart-price"><span>250</span> руб.</div>
+                            <div class="cart-discount"><span>--</span><div class="cart-discount-value"><span>50</span> руб.</div></div>
+                            <div class="cart-cost"><span>500</span> руб.</div>
                             <div class="cart-delete"><a href="#"></a></div>
                         </div>
                         <!-- cart row END -->
@@ -216,8 +229,9 @@
                                 </div>
                                 <div class="cart-count-unit">шт.</div>
                             </div>
-                            <div class="cart-price"><span>400</span> р.</div>
-                            <div class="cart-cost"><span>400</span> р.</div>
+                            <div class="cart-price"><span>400</span> руб.</div>
+                            <div class="cart-discount"><span>--</span><div class="cart-discount-value"><span>100</span> руб.</div></div>
+                            <div class="cart-cost"><span>400</span> руб.</div>
                             <div class="cart-delete"><a href="#"></a></div>
                         </div>
                         <!-- cart row END -->
@@ -233,11 +247,11 @@
                             </div>
                             <div class="cart-count">
                                 <div class="cart-count-select">
-                                    <input type="hidden" name="count" value="2" />
-                                    <div>2</div>
+                                    <input type="hidden" name="count" value="1" />
+                                    <div>1</div>
                                     <ul>
-                                        <li rel="1">1</li>
-                                        <li class="active" rel="2">2</li>
+                                        <li class="active"  rel="1">1</li>
+                                        <li rel="2">2</li>
                                         <li rel="3">3</li>
                                         <li rel="4">4</li>
                                         <li rel="5">5</li>
@@ -250,8 +264,9 @@
                                 </div>
                                 <div class="cart-count-unit">шт.</div>
                             </div>
-                            <div class="cart-price"><span>620</span> р.</div>
-                            <div class="cart-cost"><span>1240</span> р.</div>
+                            <div class="cart-price"><span>620</span> руб.</div>
+                            <div class="cart-discount"><span>--</span><div class="cart-discount-value"><span>120</span> руб.</div></div>
+                            <div class="cart-cost"><span>620</span> руб.<div class="cart-cost-current"><span>1240</span> руб.</div></div>
                             <div class="cart-delete"><a href="#"></a></div>
                         </div>
                         <!-- cart row END -->
@@ -264,18 +279,30 @@
                                     <div class="cart-info-name">Подарок</div>
                                 </td></tr></table>
                             </div>
-                            <div class="cart-count">
-                                <div class="cart-count-select">
-                                    <input type="hidden" name="count" value="1" />
-                                    <div>1</div>
-                                    <ul>
-                                        <li class="active" rel="1">1</li>
-                                    </ul>
-                                </div>
-                                <div class="cart-count-unit">шт.</div>
+                            <div class="cart-count"><span>--</span></div>
+                            <div class="cart-price"><span>--</span></div>
+                            <div class="cart-discount"><span>--</span></div>
+                            <div class="cart-cost"><span>--</span></div>
+                        </div>
+                        <!-- cart row END -->
+
+                        <!-- cart row -->
+                        <div class="cart-row cart-row-coupon">
+                            <div class="cart-photo"><div class="cart-photo-inner"><div><img src="images/icon-coupon.png" alt="" width="68" height="68" /></div></div></div>
+                            <div class="cart-info">
+                                <table><tr><td>
+                                    <div class="cart-info-name">Купон</div>
+                                    <div class="cart-info-name-eng">Введите промо код, чтобы получить дополнительную скидку</div>
+                                </td></tr></table>
                             </div>
-                            <div class="cart-price"><span>0</span> р.</div>
-                            <div class="cart-cost"><span>0</span> р.</div>
+                            <div class="cart-coupon-input">
+                                <input type="text" name="coupon" value="DR-ERTC-JOWE" />
+                                <label class="error">Такого купона не существует</label>
+                                <label class="valid">Купон успешно применен!</label>
+                            </div>
+                            <div class="cart-coupon-submit">
+                                <a href="#">Пересчитать</a>
+                            </div>
                         </div>
                         <!-- cart row END -->
 
@@ -287,14 +314,14 @@
                                     <div class="cart-info-name">Скидка постоянного покупателя (<span>3</span>%)</div>
                                 </td></tr></table>
                             </div>
-                            <div class="cart-cost"><span>-64</span> руб.</div>
+                            <div class="cart-cost"><span>-46</span> руб.</div>
                         </div>
                         <!-- cart row END -->
 
                         <!-- cart ctrl -->
                         <div class="cart-ctrl">
                             <div class="cart-ctrl-back"><a href="#">Продолжить покупки</a></div>
-                            <div class="cart-ctrl-summ">Итого: <span class="cart-ctrl-summ-count">4</span> продукта на общую сумму &nbsp;<strong><span class="cart-ctrl-summ-cost">2076</span> р.</strong></div>
+                            <div class="cart-ctrl-summ">Итого: <span class="cart-ctrl-summ-count">4</span> продукта на общую сумму &nbsp;<strong><span class="cart-ctrl-summ-cost">1474</span> р.</strong></div>
                             <div class="cart-ctrl-next"><input type="submit" value="Оформить заказ" /></div>
                         </div>
                         <!-- cart ctrl END -->
@@ -347,7 +374,7 @@
             </div>
 
             <div class="footer-email"><a href="#">help@blumau.ru</a></div>
-            <div class="developer">Разработка сайта: <a href="#">Renaissance AG</a></div>
+            <div class="developer">Разработка сайта: <a href="#">Renaissance Art</a></div>
         </div>
         <!-- footer END -->
 

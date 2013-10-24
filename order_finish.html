@@ -11,6 +11,7 @@
         <script type="text/javascript" src="js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="js/jquery.animate-colors-min.js"></script>
         <script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
     </head>
 
@@ -18,6 +19,20 @@
 
         <!-- wrapper -->
         <div class="wrapper">
+
+            <!-- top line -->
+            <div class="top-line top-line-2">
+                <div class="top-line-inner">
+                    <div class="top-line-link"><a href="#">О Blumau</a></div>
+                    <div class="top-line-link"><a href="#">Доставка и оплата</a></div>
+
+                    <div class="top-line-logout"><a href="#">Выход</a></div>
+                    <div class="top-line-profile"><a href="#">Ваш личный кабинет</a></div>
+                    <div class="top-line-welcome">Здравствуйте, Юлия!</div>
+                </div>
+            </div>
+            <!-- top line END -->
+
             <div class="wrapper-inner">
 
                 <!-- header -->
@@ -48,7 +63,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"><span>1450 р.</span></td>
                                                         <td class="product-quick-item-cost">650 р.</td>
                                                     </tr>
                                                 </table>
@@ -64,7 +78,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">350 р.</td>
                                                     </tr>
                                                 </table>
@@ -80,7 +93,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">200 р.</td>
                                                     </tr>
                                                 </table>
@@ -96,7 +108,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">100 р.</td>
                                                     </tr>
                                                 </table>
@@ -186,7 +197,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="order-detail-row">
+                                <div class="order-detail-row order-detail-row-discount">
                                     <table>
                                         <tr>
                                             <td class="order-detail-name">Скидка постоянного покупателя 3%</td>
@@ -402,32 +413,62 @@
             </div>
 
             <div class="footer-email"><a href="#">help@blumau.ru</a></div>
-            <div class="developer">Разработка сайта: <a href="#">Renaissance AG</a></div>
+            <div class="developer">Разработка сайта: <a href="#">Renaissance Art</a></div>
         </div>
         <!-- footer END -->
 
-        <!-- window email -->
-        <div class="window-email">
-            <div class="window-email-container">
-                <div class="window-email-form">
-                    <form action="#" method="post">
-                        <div class="window-email-title">Восстановление пароля</div>
-                        <div class="window-email-label">Введите Ваш e-mail:</div>
-                        <div class="window-email-input"><input type="text" name="email" value="" /></div>
-                        <div class="window-email-ctrl">
-                            <div class="window-email-submit"><div class="submit"><input type="submit" value="Восстановить" /></div></div>
-                            <div class="window-email-cancel"><a href="#">Отмена</a></div>
+        <!-- incart window -->
+        <div class="incart-window">
+            <div class="incart-window-container">
+                <div class="incart-window-wrap">
+                    <div class="incart-window-title">Спасибо, продукт  в корзине!</div>
+                    <div class="incart-window-content">
+                        <div class="incart-window-item">
+                            <div class="incart-window-item-photo"><img src="files/cart-3.jpg" alt="" width="68" height="68" /></div>
+                            <div class="incart-window-item-info">
+                                <div class="incart-window-item-name">Мыло Royal Jelly</div>
+                                <div class="incart-window-item-name-eng">organic shea butter</div>
+                            </div>
                         </div>
-                    </form>
-                </div>
-                <div class="window-email-success">На ваш e-mail: <span>ivanova.inna@yundex.ru</span><br />отправлено письмо с паролем.</div>
-                <div class="window-email-error">
-                    <div class="window-email-error-text">Пользователь <span>ivanova.inna@yundex.ru</span><br />у нас пока не зарегистрирован.</div>
-                    <div class="window-email-error-link"><a href="#"><span>Вернуться и продолжить оформление</span></a>
+                        <div class="incart-window-ctrl">
+                            <div class="incart-window-ctrl-continue"><a href="#">Продолжить покупки</a></div>
+                            <a href="#" class="incart-window-cart">Перейти в корзину</a>
+                        </div>
+                        <div class="incart-window-other-title">Отличное сочетание:</div>
+
+                        <!-- catalogue -->
+                        <div class="catalogue">
+
+                            <div class="catalogue-item">
+                                <div class="catalogue-item-photo"><a href="#"><img src="files/cart-1.jpg" alt="" width="68" height="68" /></a></div>
+                                <div class="catalogue-item-text">
+                                    <div class="catalogue-item-name"><a href="#">Мыло Gardenia</a></div>
+                                </div>
+                                <div class="catalogue-item-ctrl">
+                                    <div class="catalogue-item-price"><span>450</span>р.</div>
+                                    <div class="catalogue-item-buy"><a href="#" rel="В корзине">В корзину</a></div>
+                                </div>
+                            </div>
+
+                            <div class="catalogue-item">
+                                <div class="catalogue-item-photo"><a href="#"><img src="files/cart-3.jpg" alt="" width="68" height="68" /></a></div>
+                                <div class="catalogue-item-text">
+                                    <div class="catalogue-item-name"><a href="#">Мыло Seashell</a></div>
+                                </div>
+                                <div class="catalogue-item-ctrl">
+                                    <div class="catalogue-item-price"><span>700</span>р.</div>
+                                    <div class="catalogue-item-buy"><a href="#" rel="В корзине">В корзину</a></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- catalogue END -->
+
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- window email END -->
+        <!-- incart window END -->
 
     </body>
 </html>

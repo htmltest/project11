@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/style.css" type="text/css" />
 
         <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
     </head>
 
@@ -13,6 +14,19 @@
 
         <!-- wrapper -->
         <div class="wrapper">
+
+            <!-- top line -->
+            <div class="top-line">
+                <div class="top-line-inner">
+                    <div class="top-line-link"><a href="#">О Blumau</a></div>
+                    <div class="top-line-link"><a href="#">Доставка и оплата</a></div>
+
+                    <div class="top-line-registration"><a href="#">Регистрация</a></div>
+                    <div class="top-line-login"><a href="#">Вход в личный кабинет</a></div>
+                </div>
+            </div>
+            <!-- top line END -->
+
             <div class="wrapper-inner">
 
                 <!-- header -->
@@ -162,9 +176,118 @@
             </div>
 
             <div class="footer-email"><a href="#">help@blumau.ru</a></div>
-            <div class="developer">Разработка сайта: <a href="#">Renaissance AG</a></div>
+            <div class="developer">Разработка сайта: <a href="#">Renaissance Art</a></div>
         </div>
         <!-- footer END -->
+
+        <!-- incart window -->
+        <div class="incart-window">
+            <div class="incart-window-container">
+                <div class="incart-window-wrap">
+                    <div class="incart-window-title">Спасибо, продукт  в корзине!</div>
+                    <div class="incart-window-content">
+                        <div class="incart-window-item">
+                            <div class="incart-window-item-photo"><img src="files/cart-3.jpg" alt="" width="68" height="68" /></div>
+                            <div class="incart-window-item-info">
+                                <div class="incart-window-item-name">Мыло Royal Jelly</div>
+                                <div class="incart-window-item-name-eng">organic shea butter</div>
+                            </div>
+                        </div>
+                        <div class="incart-window-ctrl">
+                            <div class="incart-window-ctrl-continue"><a href="#">Продолжить покупки</a></div>
+                            <a href="#" class="incart-window-cart">Перейти в корзину</a>
+                        </div>
+                        <div class="incart-window-other-title">Отличное сочетание:</div>
+
+                        <!-- catalogue -->
+                        <div class="catalogue">
+
+                            <div class="catalogue-item">
+                                <div class="catalogue-item-photo"><a href="#"><img src="files/cart-1.jpg" alt="" width="68" height="68" /></a></div>
+                                <div class="catalogue-item-text">
+                                    <div class="catalogue-item-name"><a href="#">Мыло Gardenia</a></div>
+                                </div>
+                                <div class="catalogue-item-ctrl">
+                                    <div class="catalogue-item-price"><span>450</span>р.</div>
+                                    <div class="catalogue-item-buy"><a href="#" rel="В корзине">В корзину</a></div>
+                                </div>
+                            </div>
+
+                            <div class="catalogue-item">
+                                <div class="catalogue-item-photo"><a href="#"><img src="files/cart-3.jpg" alt="" width="68" height="68" /></a></div>
+                                <div class="catalogue-item-text">
+                                    <div class="catalogue-item-name"><a href="#">Мыло Seashell</a></div>
+                                </div>
+                                <div class="catalogue-item-ctrl">
+                                    <div class="catalogue-item-price"><span>700</span>р.</div>
+                                    <div class="catalogue-item-buy"><a href="#" rel="В корзине">В корзину</a></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- catalogue END -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- incart window END -->
+
+        <!-- login window -->
+        <div class="login-window">
+            <div class="login-window-container">
+                <div class="login-window-content">
+                    <div class="login-window-title">Вход в личный кабинет</div>
+                    <div class="login-window-subtitle">Доступ к Вашим контактным данным и истории покупок</div>
+                    <div class="login-window-form">
+                        <form action="#" method="post">
+                            <div class="login-form">
+                                <div class="login-form-left">
+                                    <div class="login-form-label">Введите номер телефона</div>
+                                    <div class="login-form-row">
+                                        <div class="login-form-input"><input type="text" name="phone" value="" /></div>
+                                    </div>
+                                    <div class="login-form-label">Пароль</div>
+                                    <div class="login-form-row">
+                                        <div class="login-form-input login-form-input-2"><input type="password" name="password" value="" /></div>
+                                        <div class="login-form-forgot-link"><a href="#">Забыли пароль?</a></div>
+                                    </div>
+                                </div>
+                                <div class="login-form-right">
+                                    <div class="login-form-right-reg">Впервые у нас? <a href="#">Зарегистрируйтесь</a> и&nbsp;покупайте со скидкой 3%</div>
+                                    <div class="login-form-right-phone"><a href="#">Изменился номер телефона?</a></div>
+                                </div>
+                            </div>
+                            <div class="login-window-ctrl">
+                                <div class="login-window-submit"><input type="submit" value="Войти на сайт" /></div>
+                                <div class="login-window-cancel"><a href="#">Отмена</a></div>
+                            </div>
+                            <div class="login-form-forgot">
+                                <div class="login-form-forgot-captcha"><img src="files/captcha.jpg" alt="" width="150" height="62" /></div>
+                                <div class="login-form-forgot-ctrl">
+                                    <div class="login-form-forgot-title">Введите код с картинки и нажмите кнопку:</div>
+                                    <div class="login-form-input login-form-input-3"><input type="text" name="captcha" value="" /></div>
+                                    <a href="#" class="login-form-sms">Получить пароль по sms</a>
+                                </div>
+                                <div class="login-form-forgot-valid">SMS с паролем выслана на указанный Вами номер!</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- login window END -->
+
+        <!-- phone window -->
+        <div class="phone-window">
+            <div class="login-window-container">
+                <div class="login-window-content">
+                    <div class="login-window-title">Восстановление доступа</div>
+                    <div class="phone-window-text">Позвоните по телефону <strong>+7 (495) 749-02-53</strong><br /> и мы вам поможем!</div>
+                </div>
+            </div>
+        </div>
+        <!-- phone window END -->
 
     </body>
 </html>

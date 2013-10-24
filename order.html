@@ -11,6 +11,7 @@
         <script type="text/javascript" src="js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="js/jquery.animate-colors-min.js"></script>
         <script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src="js/tools.js"></script>
     </head>
 
@@ -18,6 +19,19 @@
 
         <!-- wrapper -->
         <div class="wrapper">
+
+            <!-- top line -->
+            <div class="top-line">
+                <div class="top-line-inner">
+                    <div class="top-line-link"><a href="#">О Blumau</a></div>
+                    <div class="top-line-link"><a href="#">Доставка и оплата</a></div>
+
+                    <div class="top-line-registration"><a href="#">Регистрация</a></div>
+                    <div class="top-line-login"><a href="#">Вход в личный кабинет</a></div>
+                </div>
+            </div>
+            <!-- top line END -->
+
             <div class="wrapper-inner">
 
                 <!-- header -->
@@ -48,7 +62,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"><span>1450 р.</span></td>
                                                         <td class="product-quick-item-cost">650 р.</td>
                                                     </tr>
                                                 </table>
@@ -64,7 +77,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">350 р.</td>
                                                     </tr>
                                                 </table>
@@ -80,7 +92,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">200 р.</td>
                                                     </tr>
                                                 </table>
@@ -96,7 +107,6 @@
                                                 <table>
                                                     <tr>
                                                         <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
-                                                        <td class="product-quick-item-cost"></td>
                                                         <td class="product-quick-item-cost">100 р.</td>
                                                     </tr>
                                                 </table>
@@ -186,7 +196,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="order-detail-row">
+                                <div class="order-detail-row order-detail-row-discount">
                                     <table>
                                         <tr>
                                             <td class="order-detail-name">Скидка постоянного покупателя 3%</td>
@@ -230,21 +240,18 @@
                             <!-- order user -->
                             <div class="order-user">
                                 <div class="order-user-form">
-                                    <form action="#" method="post">
-                                        <div class="order-user-form-title">Уже покупали у нас?</div>
-                                        <div class="order-user-form-hint">Введите свой e-mail и пароль и оформите заказ за 3 клика !</div>
-                                        <div class="order-user-row">
-                                            <div class="order-user-input"><span>Введите логин</span><input type="text" name="login" value="" /></div>
-                                            <div class="order-user-input"><span>Введите пароль</span><input type="password" name="password" value="" /></div>
-                                            <div class="order-user-submit"><div class="submit"><input type="submit" value="Войти и продолжить" /></div></div>
+                                    <div class="order-user-form-inner">
+                                        <div class="order-user-text">
+                                            <div class="order-user-form-title">Уже покупали у нас?</div>
+                                            <div class="order-user-form-hint">Введите свой e-mail и пароль и оформите заказ за 3 клика !</div>
                                         </div>
-                                        <div class="order-user-row-links">
-                                            <a href="#" class="order-user-row-link-forgot">Забыли пароль?</a>
-                                        </div>
-                                    </form>
+                                        <div class="order-user-submit"><a href="#"><span>Войти и продолжить</span></a></div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- order user END -->
+
+                            <div class="order-form-required">Обязательные для заполнения поля отмечены звездочкой *</div>
 
                             <!-- order form -->
                             <div class="order-form">
@@ -254,28 +261,27 @@
                                     <div class="order-form-group">
                                         <div class="order-form-group-title">Контакты</div>
                                         <div class="order-form-row">
-                                            <div class="order-form-label">ФИО</div>
+                                            <div class="order-form-label">Имя <span>*</span></div>
                                             <div class="order-form-input">
-                                                <input type="text" name="name" value="Емельянова Юлия Сергеевна" class="required" />
+                                                <input type="text" name="name" value="Юлия" class="required" />
+                                            </div>
+                                        </div>
+                                        <div class="order-form-row">
+                                            <div class="order-form-label">Фамилия <span>*</span></div>
+                                            <div class="order-form-input">
+                                                <input type="text" name="lastname" value="Емельянова" class="required" />
+                                            </div>
+                                        </div>
+                                        <div class="order-form-row">
+                                            <div class="order-form-label">Телефон <span>*</span></div>
+                                            <div class="order-form-input">
+                                                <input type="text" name="phone" value="8 (903) 724-34-12" class="required" />
                                             </div>
                                         </div>
                                         <div class="order-form-row">
                                             <div class="order-form-label">E-mail</div>
                                             <div class="order-form-input">
-                                                <input type="text" name="email" value="yulchik003@mail.ru" class="required email" />
-                                            </div>
-                                        </div>
-                                        <div class="order-form-row">
-                                            <div class="order-form-label">Пароль</div>
-                                            <div class="order-form-input">
-                                                <input type="password" name="password" value="" />
-                                                <div class="order-form-hint">Введите пароль и получите скидку 3% на все продукты!</div>
-                                            </div>
-                                        </div>
-                                        <div class="order-form-row">
-                                            <div class="order-form-label">Телефон</div>
-                                            <div class="order-form-input">
-                                                <input type="text" name="phone" value="" />
+                                                <input type="text" name="email" value="yulchik003@mail.ru" />
                                             </div>
                                         </div>
                                     </div>
@@ -296,13 +302,25 @@
                                 <div class="order-form-group" id="order-form-delivery">
                                     <div class="order-form-group-title">Доставка</div>
                                     <div class="order-form-row">
-                                        <div class="order-form-label">Город</div>
+                                        <div class="order-form-label">Город <span>*</span></div>
+                                        <div class="order-form-select">
+                                            <input type="hidden" name="city" value="1" />
+                                            <div>Москва</div>
+                                            <ul>
+                                                <li class="active" rel="1">Москва</li>
+                                                <li rel="2">Санкт-Петербург</li>
+                                                <li rel="0">Другой город</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="order-form-row order-form-row-other">
+                                        <div class="order-form-label">&nbsp;</div>
                                         <div class="order-form-input">
-                                            <input type="text" name="city" value="" class="required" />
+                                            <input type="text" name="other" value="" class="required" />
                                         </div>
                                     </div>
                                     <div class="order-form-row">
-                                        <div class="order-form-label">Адрес</div>
+                                        <div class="order-form-label">Адрес <span>*</span></div>
                                         <div class="order-form-input">
                                             <input type="text" name="address" value="" class="required" />
                                         </div>
@@ -458,32 +476,65 @@
             </div>
 
             <div class="footer-email"><a href="#">help@blumau.ru</a></div>
-            <div class="developer">Разработка сайта: <a href="#">Renaissance AG</a></div>
+            <div class="developer">Разработка сайта: <a href="#">Renaissance Art</a></div>
         </div>
         <!-- footer END -->
 
-        <!-- window email -->
-        <div class="window-email">
-            <div class="window-email-container">
-                <div class="window-email-form">
-                    <form action="#" method="post">
-                        <div class="window-email-title">Восстановление пароля</div>
-                        <div class="window-email-label">Введите Ваш e-mail:</div>
-                        <div class="window-email-input"><input type="text" name="email" value="" /></div>
-                        <div class="window-email-ctrl">
-                            <div class="window-email-submit"><div class="submit"><input type="submit" value="Восстановить" /></div></div>
-                            <div class="window-email-cancel"><a href="#">Отмена</a></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="window-email-success">На ваш e-mail: <span>ivanova.inna@yundex.ru</span><br />отправлено письмо с паролем.</div>
-                <div class="window-email-error">
-                    <div class="window-email-error-text">Пользователь <span>ivanova.inna@yundex.ru</span><br />у нас пока не зарегистрирован.</div>
-                    <div class="window-email-error-link"><a href="#"><span>Вернуться и продолжить оформление</span></a>
+        <!-- login window -->
+        <div class="login-window">
+            <div class="login-window-container">
+                <div class="login-window-content">
+                    <div class="login-window-title">Вход в личный кабинет</div>
+                    <div class="login-window-subtitle">Доступ к Вашим контактным данным и истории покупок</div>
+                    <div class="login-window-form">
+                        <form action="#" method="post">
+                            <div class="login-form">
+                                <div class="login-form-left">
+                                    <div class="login-form-label">Введите номер телефона</div>
+                                    <div class="login-form-row">
+                                        <div class="login-form-input"><input type="text" name="phone" value="" /></div>
+                                    </div>
+                                    <div class="login-form-label">Пароль</div>
+                                    <div class="login-form-row">
+                                        <div class="login-form-input login-form-input-2"><input type="password" name="password" value="" /></div>
+                                        <div class="login-form-forgot-link"><a href="#">Забыли пароль?</a></div>
+                                    </div>
+                                </div>
+                                <div class="login-form-right">
+                                    <div class="login-form-right-reg">Впервые у нас? <a href="#">Зарегистрируйтесь</a> и&nbsp;покупайте со скидкой 3%</div>
+                                    <div class="login-form-right-phone"><a href="#">Изменился номер телефона?</a></div>
+                                </div>
+                            </div>
+                            <div class="login-window-ctrl">
+                                <div class="login-window-submit"><input type="submit" value="Войти на сайт" /></div>
+                                <div class="login-window-cancel"><a href="#">Отмена</a></div>
+                            </div>
+                            <div class="login-form-forgot">
+                                <div class="login-form-forgot-captcha"><img src="files/captcha.jpg" alt="" width="150" height="62" /></div>
+                                <div class="login-form-forgot-ctrl">
+                                    <div class="login-form-forgot-title">Введите код с картинки и нажмите кнопку:</div>
+                                    <div class="login-form-input login-form-input-3"><input type="text" name="captcha" value="" /></div>
+                                    <a href="#" class="login-form-sms">Получить пароль по sms</a>
+                                </div>
+                                <div class="login-form-forgot-valid">SMS с паролем выслана на указанный Вами номер!</div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- window email END -->
+        <!-- login window END -->
+
+        <!-- phone window -->
+        <div class="phone-window">
+            <div class="login-window-container">
+                <div class="login-window-content">
+                    <div class="login-window-title">Восстановление доступа</div>
+                    <div class="phone-window-text">Позвоните по телефону <strong>+7 (495) 749-02-53</strong><br /> и мы вам поможем!</div>
+                </div>
+            </div>
+        </div>
+        <!-- phone window END -->
 
     </body>
 </html>
