@@ -321,32 +321,25 @@ img {border:none}
 
 .cart-header {width:983px; padding:5px 0 5px 5px; font-size:13px; line-height:40px; color:#7b6152; position:relative; border:1px solid #e7e7e7; background:#fff}
 .cart-header:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.cart-header div {float:left; margin:0 5px 0 0; padding:0 0 0 15px; height:40px; background:#f5f2ef}
-.cart-header-1 {width:352px}
-.cart-header-2 {width:114px}
-.cart-header-3 {width:104px}
-.cart-header-4 {width:102px}
-.cart-header-5 {width:125px}
-.cart-header-6 {width:66px}
+.cart-header div {float:left; margin:0 5px 0 0; height:40px; background:#f5f2ef; text-align:center}
+.cart-header div.cart-header-1 {width:408px; padding:0 0 0 15px; text-align:left}
+.cart-header div.cart-header-2 {width:133px}
+.cart-header div.cart-header-3 {width:138px}
+.cart-header div.cart-header-4 {width:162px}
+.cart-header div.cart-header-5 {width:102px}
 
 .cart form {margin:0; padding:0}
 .cart-row {width:100%; background:url(../images/product-descr-item.png) repeat-x left bottom; height:80px; padding:7px 0 0 0}
 .cart-row:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.cart-photo {float:left; width:110px; line-height:80px; background:#fff}
+.cart-photo {float:left; width:99px; line-height:80px; background:#fff}
 .cart-photo-inner {width:68px; height:68px; padding:5px; background:#fff; border:1px solid #e7e7e7}
 .cart-photo-inner div {width:68px; height:68px; position:relative; overflow:hidden}
-.cart-info {float:left; width:263px; padding:0 5px 0 0}
-.cart-row-discount .cart-info {width:643px}
-.cart-row-coupon .cart-info {width:440px}
+.cart-info {float:left; width:320px; padding:0 5px 0 10px}
 .cart-info table {width:100%; border-collapse:collapse; margin:0}
 .cart-info table td {height:80px; vertical-align:middle; text-align:left; padding:0}
 .cart-info-name {font:20px/22px georgia, "times new roman", times, serif; color:#7b6152; padding:0 0 5px 0}
-.cart-row-gift .cart-info-name {color:#634430}
-.cart-row-discount .cart-info-name {color:#d14d0f}
-.cart-row-coupon .cart-info-name {color:#634430}
 .cart-info-name-eng {font-size:11px; line-height:13px; color:#7b6152; text-transform:uppercase}
-.cart-row-coupon .cart-info-name-eng {font-size:12px; color:#988477; text-transform:none}
-.cart-count {float:left; width:114px; padding:20px 5px 0 15px}
+.cart-count {float:left; width:112px; padding:20px 5px 0 21px}
 .cart-count-select {float:left; width:57px; position:relative}
 .cart-count-select-open {z-index:99}
 .cart-count-select div {position:relative; width:47px; height:33px; color:#7b6152; padding:0 0 0 10px; font:24px/30px georgia, "times new roman", times, serif; background:#fff url(../images/cart-count-select.png); cursor:pointer}
@@ -356,22 +349,26 @@ img {border:none}
 .cart-count-select ul li:hover {background:#e7e7e7}
 .cart-count-select ul li.active {background:#7b6152; color:#fff; cursor:default}
 .cart-count-unit {float:left; padding:0 0 0 9px; font:15px/33px georgia, "times new roman", times, serif; color:#7b6152}
-.cart-row-gift .cart-count {padding-top:23px; font:15px/24px georgia, "times new roman", times, serif; color:#7b6152}
-.cart-row-gift .cart-count span {font-size:24px}
-.cart-price {float:left; width:104px; padding:23px 5px 0 15px; font:15px/24px georgia, "times new roman", times, serif; color:#7b6152}
+.cart-price {float:left; width:104px; padding:23px 5px 0 34px; font:15px/24px georgia, "times new roman", times, serif; color:#7b6152}
 .cart-price span {font-size:24px}
-.cart-discount {float:left; width:102px; padding:23px 5px 0 15px; font:15px/24px georgia, "times new roman", times, serif; color:#7b6152}
-.cart-discount span {font-size:24px}
-.cart-discount-value {display:none}
-.cart-cost {float:left; width:125px; padding:23px 5px 0 15px; font:15px/24px georgia, "times new roman", times, serif; color:#d14d0f}
+.cart-cost {float:left; width:118px; padding:23px 5px 0 44px; font:15px/24px georgia, "times new roman", times, serif; color:#7b6152}
 .cart-cost span {font-size:24px}
-.cart-cost-current {display:none; color:#7b6152; margin-top:-6px}
-.cart-cost-current span {text-decoration:line-through}
-.cart-delete {float:left; padding:18px 0 0 15px; width:66px}
-.cart-delete a {display:block; width:39px; height:39px; background:url(../images/cart-delete.png)}
+.cart-delete {float:left; padding:18px 0 0 0; width:102px}
+.cart-delete a {display:block; margin:0 auto; width:39px; height:39px; background:url(../images/cart-delete.png)}
 .cart-delete a:hover {background-position:left -39px}
 
-.cart-coupon-input {float:left; padding:24px 0 0 0; position:relative; width:289px}
+.cart-temp {background:url(../images/product-descr-item.png) repeat-x left bottom; padding:17px 0 22px 0}
+.cart-temp-row {width:100%}
+.cart-temp-row:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.cart-temp-row-name {float:left; width:736px; text-align:right; color:#7b6152; font:18px/24px georgia, "times new roman", times, serif; position:relative; top:2px}
+.cart-temp-row-val {float:right; width:231px; color:#d14d0f; font:15px/24px georgia, "times new roman", times, serif}
+.cart-temp-row-val.cart-temp-summ {color:#7b6152}
+.cart-temp-row-val span {font-size:24px}
+.cart-temp-discount span {margin-left:-8px}
+.cart-temp-coupon span {margin-left:-8px}
+.cart-temp-row-coupon {display:none}
+
+/*.cart-coupon-input {float:left; padding:24px 0 0 0; position:relative; width:289px}
 .cart-coupon-input input {border:1px solid #c8c8c8; height:21px; padding:5px 13px; width:249px; color:#634430; font:14px/21px arial, helvetica, sans-serif; vertical-align:top; background:#fff url(../images/login-form-input.png) repeat-x; margin:0; outline:none}
 .cart-coupon-input label.error {display:none; position:absolute; z-index:2; left:0; top:-23px; height:32px; background:#d57244; padding:0 14px; font-size:12px; line-height:32px; color:#fff}
 .cart-coupon-input label.error:after {content:''; display:block; width:11px; height:6px; background:url(../images/cart-coupon-input-error.png); position:absolute; left:24px; bottom:-6px}
@@ -379,14 +376,27 @@ img {border:none}
 .cart-coupon-input label.valid:after {content:''; display:block; width:11px; height:6px; background:url(../images/cart-coupon-input-valid.png); position:absolute; left:24px; bottom:-6px}
 .cart-coupon-submit {float:left; padding:24px 0 0 0}
 .cart-coupon-submit a {display:block; width:100px; height:33px; border:none; position:relative; text-decoration:none; cursor:pointer; background:url(../images/cart-coupon-submit.png); text-align:left; padding:0 0 0 46px; margin:0; outline:none; color:#f2e9e2; text-shadow:0 0 1px rgba(0, 0, 0, .69); font-size:11px; line-height:33px; text-transform:uppercase; -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, .2); -moz-box-shadow:0 1px 2px rgba(0, 0, 0, .2); box-shadow:0 1px 2px rgba(0, 0, 0, .2); behavior:url(./js/PIE.htc)}
-.cart-coupon-submit a:hover {background-position:left -33px}
+.cart-coupon-submit a:hover {background-position:left -33px}*/
 
-.cart-ctrl {width:100%}
+.cart-coupon {position:relative; background:#f5f2ef; width:100%; padding:30px 0}
+.cart-coupon:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.cart-coupon-submit {float:right; width:113px; font-size:13px; line-height:33px}
+.cart-coupon-submit a {color:#7b6152; text-decoration:none; background:url(../images/cart-coupon-submit.png) repeat-x left bottom}
+.cart-coupon-submit a:hover {background:none}
+.cart-coupon-input {float:right; width:261px; position:relative}
+.cart-coupon-input input {border:1px solid #c8c8c8; height:21px; padding:5px 13px; width:211px; color:#7b6152; font:15px/21px georgia, "times new roman", times, serif; vertical-align:top; background:#fff url(../images/login-form-input.png) repeat-x; margin:0; outline:none}
+.cart-coupon-title {float:right; padding:0 22px 0 0; font-size:12px; line-height:33px; color:#7b6152}
+.cart-coupon-error,
+.cart-coupon-hint {display:none; float:right; clear:right; width:300px; padding:5px 74px 0 0; margin-bottom:-11px; color:#d14d0f; font-size:11px; line-height:14px}
+.cart-coupon-success {display:none; float:right; font-size:12px; line-height:18px; color:#7b6152; width:374px; padding:7px 0 8px 0}
+
+.cart-ctrl {width:100%; padding:0 0 30px 0}
 .cart-ctrl:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .cart-ctrl-back {float:left; width:213px; padding:34px 0 0 37px; font-size:14px; line-height:18px; background:url(../images/cart-ctrl-back.png) no-repeat 3px 40px}
 .cart-ctrl-back a {color:#836a5a}
-.cart-ctrl-summ {float:left; width:490px; text-align:center; font-size:16px; line-height:25px; color:#634430; padding:29px 0 0 0}
-.cart-ctrl-summ strong {font:bold 23px/25px georgia, "times new roman", times, serif; color:#d14d0f}
+.cart-ctrl-summ {float:left; width:504px; text-align:right; font:bold 23px/33px georgia, "times new roman", times, serif; color:#d14d0f; padding:24px 0 0 0}
+.cart-ctrl-summ strong {font-size:20px; color:#7b6152}
+.cart-ctrl-summ span {font-size:31px}
 .cart-ctrl-next {float:right; padding:24px 0 0 0; position:relative}
 .cart-ctrl-next input {width:210px; height:40px; background:url(../images/cart-submit.png); text-align:left; color:#f2e9e2; font:14px/38px arial, helvetica, sans-serif; text-shadow:0 0 1px rgba(0, 0, 0, .69); cursor:pointer; text-transform:uppercase; border:none; vertical-align:top; margin:0; padding:0 0 0 24px; outline:none}
 .cart-ctrl-next input:hover {background-position:left -40px}

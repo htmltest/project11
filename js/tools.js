@@ -125,11 +125,7 @@ var availableCities = [
             curOption.addClass('active');
             curSelect.removeClass('cart-count-select-open');
             var curItem = curSelect.parents().filter('.cart-row');
-            if (curItem.find('.cart-discount-value:visible').length == 1) {
-                curItem.find('.cart-cost span').eq(0).html((Number(curItem.find('.cart-price span').html()) - Number(curItem.find('.cart-discount-value span').html())) * Number(curOption.attr('rel')));
-            } else {
-                curItem.find('.cart-cost span').eq(0).html(Number(curItem.find('.cart-price span').html()) * Number(curOption.attr('rel')));
-            }
+            curItem.find('.cart-cost span').eq(0).html(Number(curItem.find('.cart-price span').html()) * Number(curOption.attr('rel')));
             recalcCost();
         });
 
@@ -143,8 +139,35 @@ var availableCities = [
         $('.cart-delete a').click(function() {
             $(this).parents().filter('.cart-row').slideUp(function() {
                 $(this).remove();
+                if ($('.cart-row-coupon-have').length == 0) {
+                    $('.cart-coupon-submit, .cart-coupon-input, .cart-coupon-title').show();
+                    $('.cart-temp-row-coupon').hide();
+                    $('.cart-coupon-success').hide();
+                }
                 recalcCost();
             });
+            return false;
+        });
+
+        // купон
+        $('.cart-coupon-input input').focus(function() {
+            $('.cart-coupon-error, .cart-coupon-hint').css({'display': 'none'});
+        });
+
+        $('.cart-coupon-submit a').click(function() {
+            var curCoupon = $('.cart-coupon-input input').val();
+            if (curCoupon == 'DR-ERTC-JOWE') {
+                if ($('.cart-row-coupon-have').length > 0) {
+                    $('.cart-temp-row-coupon').show();
+                    $('.cart-coupon-submit, .cart-coupon-input, .cart-coupon-title').hide();
+                    $('.cart-coupon-success').show();
+                    recalcCost();
+                } else {
+                    $('.cart-coupon-hint').show();
+                }
+            } else {
+                $('.cart-coupon-error').show();
+            }
             return false;
         });
 
@@ -371,34 +394,6 @@ var availableCities = [
 
         $('input[name="phone"]').mask('8 (999) 999 99 99');
 
-        // купон
-        $('.cart-coupon-input input').focus(function() {
-            $('.cart-coupon-input label').css({'display': 'none'});
-        });
-
-        $('.cart-coupon-submit a').click(function() {
-            var curCoupon = $('.cart-coupon-input input').val();
-            if (curCoupon == 'DR-ERTC-JOWE') {
-                $('.cart-coupon-input .valid').css({'display': 'block'});
-                $('.cart-discount').each(function() {
-                    if ($(this).find('.cart-discount-value').length == 1) {
-                        $(this).find('span').eq(0).hide();
-                        $(this).find('.cart-discount-value').show();
-                        var curItem = $(this).parents().filter('.cart-row');
-                        if (curItem.find('.cart-discount-value:visible').length == 1) {
-                            curItem.find('.cart-cost span').eq(0).html((Number(curItem.find('.cart-price span').html()) - Number(curItem.find('.cart-discount-value span').html())) * Number(curItem.find('.cart-count input').val()));
-                        } else {
-                            curItem.find('.cart-cost span').eq(0).html(Number(curItem.find('.cart-price span').html()) * Number(curItem.find('.cart-count input').val()));
-                        }
-                    }
-                });
-                recalcCost();
-            } else {
-                $('.cart-coupon-input .error').css({'display': 'block'});
-            }
-            return false;
-        });
-
         $('.news-load-link a').live('click', function() {
             var curLink = $(this);
             curLink.parent().before('<div class="news-load"></div>');
@@ -504,16 +499,17 @@ var availableCities = [
         var curSumm = 0;
         var curCount = 0;
         $('.cart-row').each(function() {
-            if (!$(this).hasClass('cart-row-coupon') && !$(this).hasClass('cart-row-discount') && !$(this).hasClass('cart-row-gift')) {
-                curSumm += Number($(this).find('.cart-cost span').html());
-                curCount += Number($(this).find('.cart-count input').val());
-            }
+            curSumm += Number($(this).find('.cart-cost span').html());
         });
-        if ($('.cart-row-discount').length == 1) {
-            $('.cart-row-discount .cart-cost span').html('-' + Math.round(curSumm * (Number($('.cart-row-discount .cart-info-name span').html()) / 100)));
+        $('.cart-temp-summ span').html(curSumm);
+        if ($('.cart-temp-discount').length > 0) {
+            $('.cart-temp-discount span').html(-Math.round(curSumm * Number($('.cart-temp-discount span').attr('rel')) / 100));
         }
-        $('.cart-ctrl-summ-count').html(curCount);
-        $('.cart-ctrl-summ-cost').html(curSumm - Math.round(curSumm * (Number($('.cart-row-discount .cart-info-name span').html()) / 100)));
+        if ($('.cart-temp-coupon:visible').length > 0) {
+            $('.cart-ctrl-summ span').html(curSumm - Math.round(curSumm * Number($('.cart-temp-discount span').attr('rel')) / 100) + Number($('.cart-temp-coupon span').html()));
+        } else {
+            $('.cart-ctrl-summ span').html(curSumm - Math.round(curSumm * Number($('.cart-temp-discount span').attr('rel')) / 100));
+        }
     }
 
     // обработка скроллинга

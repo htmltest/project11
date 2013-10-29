@@ -156,9 +156,8 @@
                     <div class="cart-header-1">Продукт</div>
                     <div class="cart-header-2">Количество</div>
                     <div class="cart-header-3">Стоимость</div>
-                    <div class="cart-header-4">Скидка</div>
-                    <div class="cart-header-5">Общая стоимость</div>
-                    <div class="cart-header-6">Удалить</div>
+                    <div class="cart-header-4">Общая стоимость</div>
+                    <div class="cart-header-5">Удалить</div>
                 </div>
                 <!-- cart header END -->
 
@@ -167,23 +166,23 @@
                     <form action="#" method="post">
 
                         <!-- cart row -->
-                        <div class="cart-row">
+                        <div class="cart-row cart-row-coupon-have">
                             <div class="cart-photo"><div class="cart-photo-inner"><div><img src="files/cart-1.jpg" alt="" width="68" height="68" /></div></div></div>
                             <div class="cart-info">
                                 <table><tr><td>
-                                    <div class="cart-info-name"><a href="#">Мыло Gardenia</a></div>
+                                    <div class="cart-info-name"><a href="#">Мыло Gardenia & Orange Angel Face Botanicals</a></div>
                                     <div class="cart-info-name-eng">organic shea butter</div>
                                 </td></tr></table>
                             </div>
                             <div class="cart-count">
                                 <div class="cart-count-select">
-                                    <input type="hidden" name="count" value="2" />
-                                    <div>2</div>
+                                    <input type="hidden" name="count" value="4" />
+                                    <div>4</div>
                                     <ul>
                                         <li rel="1">1</li>
-                                        <li class="active" rel="2">2</li>
+                                        <li rel="2">2</li>
                                         <li rel="3">3</li>
-                                        <li rel="4">4</li>
+                                        <li class="active" rel="4">4</li>
                                         <li rel="5">5</li>
                                         <li rel="6">6</li>
                                         <li rel="7">7</li>
@@ -195,8 +194,7 @@
                                 <div class="cart-count-unit">шт.</div>
                             </div>
                             <div class="cart-price"><span>250</span> руб.</div>
-                            <div class="cart-discount"><span>--</span><div class="cart-discount-value"><span>50</span> руб.</div></div>
-                            <div class="cart-cost"><span>500</span> руб.</div>
+                            <div class="cart-cost"><span>1000</span> руб.</div>
                             <div class="cart-delete"><a href="#"></a></div>
                         </div>
                         <!-- cart row END -->
@@ -230,7 +228,6 @@
                                 <div class="cart-count-unit">шт.</div>
                             </div>
                             <div class="cart-price"><span>400</span> руб.</div>
-                            <div class="cart-discount"><span>--</span><div class="cart-discount-value"><span>100</span> руб.</div></div>
                             <div class="cart-cost"><span>400</span> руб.</div>
                             <div class="cart-delete"><a href="#"></a></div>
                         </div>
@@ -265,66 +262,46 @@
                                 <div class="cart-count-unit">шт.</div>
                             </div>
                             <div class="cart-price"><span>620</span> руб.</div>
-                            <div class="cart-discount"><span>--</span><div class="cart-discount-value"><span>120</span> руб.</div></div>
-                            <div class="cart-cost"><span>620</span> руб.<div class="cart-cost-current"><span>1240</span> руб.</div></div>
+                            <div class="cart-cost"><span>620</span> руб.</div>
                             <div class="cart-delete"><a href="#"></a></div>
                         </div>
                         <!-- cart row END -->
 
-                        <!-- cart row -->
-                        <div class="cart-row cart-row-gift">
-                            <div class="cart-photo"><div class="cart-photo-inner"><div><img src="images/icon-gift.png" alt="" width="68" height="68" /></div></div></div>
-                            <div class="cart-info">
-                                <table><tr><td>
-                                    <div class="cart-info-name">Подарок</div>
-                                </td></tr></table>
+                        <!-- cart temp -->
+                        <div class="cart-temp">
+                            <div class="cart-temp-row">
+                                <div class="cart-temp-row-name">Всего:</div>
+                                <div class="cart-temp-row-val cart-temp-summ"><span>2020</span> руб.</div>
                             </div>
-                            <div class="cart-count"><span>--</span></div>
-                            <div class="cart-price"><span>--</span></div>
-                            <div class="cart-discount"><span>--</span></div>
-                            <div class="cart-cost"><span>--</span></div>
-                        </div>
-                        <!-- cart row END -->
-
-                        <!-- cart row -->
-                        <div class="cart-row cart-row-coupon">
-                            <div class="cart-photo"><div class="cart-photo-inner"><div><img src="images/icon-coupon.png" alt="" width="68" height="68" /></div></div></div>
-                            <div class="cart-info">
-                                <table><tr><td>
-                                    <div class="cart-info-name">Купон</div>
-                                    <div class="cart-info-name-eng">Введите промо код, чтобы получить дополнительную скидку</div>
-                                </td></tr></table>
+                            <div class="cart-temp-row">
+                                <div class="cart-temp-row-name">Скидка постоянного покупателя:</div>
+                                <div class="cart-temp-row-val cart-temp-discount"><span rel="3">-61</span> руб.</div>
                             </div>
-                            <div class="cart-coupon-input">
-                                <input type="text" name="coupon" value="DR-ERTC-JOWE" />
-                                <label class="error">Такого купона не существует</label>
-                                <label class="valid">Купон успешно применен!</label>
-                            </div>
-                            <div class="cart-coupon-submit">
-                                <a href="#">Пересчитать</a>
+                            <div class="cart-temp-row cart-temp-row-coupon">
+                                <div class="cart-temp-row-name">Ваша скидка по купону:</div>
+                                <div class="cart-temp-row-val cart-temp-coupon"><span>-1000</span> руб.</div>
                             </div>
                         </div>
-                        <!-- cart row END -->
-
-                        <!-- cart row -->
-                        <div class="cart-row cart-row-discount">
-                            <div class="cart-photo"><div class="cart-photo-inner"><div><img src="images/icon-discount.png" alt="" width="68" height="68" /></div></div></div>
-                            <div class="cart-info">
-                                <table><tr><td>
-                                    <div class="cart-info-name">Скидка постоянного покупателя (<span>3</span>%)</div>
-                                </td></tr></table>
-                            </div>
-                            <div class="cart-cost"><span>-46</span> руб.</div>
-                        </div>
-                        <!-- cart row END -->
+                        <!-- cart temp END -->
 
                         <!-- cart ctrl -->
                         <div class="cart-ctrl">
                             <div class="cart-ctrl-back"><a href="#">Продолжить покупки</a></div>
-                            <div class="cart-ctrl-summ">Итого: <span class="cart-ctrl-summ-count">4</span> продукта на общую сумму &nbsp;<strong><span class="cart-ctrl-summ-cost">1474</span> р.</strong></div>
+                            <div class="cart-ctrl-summ"><strong>Сумма к оплате:</strong> <span>1959</span> руб.</div>
                             <div class="cart-ctrl-next"><input type="submit" value="Оформить заказ" /></div>
                         </div>
                         <!-- cart ctrl END -->
+
+                        <!-- cart coupon -->
+                        <div class="cart-coupon">
+                            <div class="cart-coupon-submit"><a href="#">Пересчитать</a></div>
+                            <div class="cart-coupon-input"><input type="text" name="coupon" value="DR-ERTC-JOWE" /></div>
+                            <div class="cart-coupon-title">У вас есть купон? Введите его здесь:</div>
+                            <div class="cart-coupon-error">Такого купона не существует</div>
+                            <div class="cart-coupon-hint">К сожалению, купон не распространяется<br />на продукты в вашей корзине. Добавьте нужный продукт<br />и получите скидку! Или позвоните нам и мы поможем:<br />8 (495) 749-02-53</div>
+                            <div class="cart-coupon-success">Купон успешно активирован!</div>
+                        </div>
+                        <!-- cart coupon END -->
 
                     </form>
                 </div>
