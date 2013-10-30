@@ -404,6 +404,77 @@ var availableCities = [
             return false;
         });
 
+        $('.cabinet-form form .order-form-select div').click(function() {
+            $('.order-form-select-open').removeClass('order-form-select-open');
+            $(this).parent().addClass('order-form-select-open');
+        });
+
+        $('.cabinet-form .order-form-select ul li').click(function() {
+            var curOption = $(this);
+            var curSelect = curOption.parent().parent();
+            curSelect.find('input').val(curOption.attr('rel'));
+            curSelect.find('div').html(curOption.html());
+            curSelect.find('li.active').removeClass('active');
+            curOption.addClass('active');
+            curSelect.removeClass('order-form-select-open');
+            if (curOption.attr('rel') == 0) {
+                $('.cabinet-form form .order-form-row-other').slideDown();
+            } else {
+                $('.cabinet-form form .order-form-row-other').slideUp();
+            }
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.cabinet-form .order-form-select').length == 0) {
+                $('.cabinet-form .order-form-select-open').removeClass('order-form-select-open');
+            }
+        });
+
+        // отправка рецепта на e-mail
+        $('.product-ctrl-email-link').click(function() {
+            $('.product-email-window').stop(true, true);
+            if ($('.product-email-window:visible').length == 1) {
+                $('.product-email-window').stop().fadeOut();
+            } else {
+                $('.product-email-window-form').show();
+                $('.product-email-window-send').hide();
+                $('.product-email-input input').val('');
+                $('.product-email-window').stop().show().css({'bottom': 79, 'opacity': .5}).animate({'bottom': 29, 'opacity': 1}, 300);
+            }
+            return false;
+        });
+
+        $('.product-email-close, .product-email-window-cancel a').click(function() {
+            $('.product-email-window').fadeOut();
+            return false;
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.product-ctrl-email').length == 0) {
+                $('.product-email-window').fadeOut();
+            }
+            if ($(e.target).parents().filter('.product-ctrl-recept').length == 0) {
+                $('.allincart-email-window').fadeOut();
+            }
+        });
+
+        $('.product-email-window-form form').validate({
+            messages: {
+                email: 'Это обязательное поле!'
+            },
+            submitHandler: function(form) {
+                // здесь можно вставить обращение к скрипту, который отправит сообщение на указанный e-mail
+                $('.product-email-window-form').hide();
+                $('.product-email-window-send').show();
+            }
+        });
+
+        $(".product-ctrl-recept-link").click(function(){
+            $('.allincart-email-window-send').show();
+            $('.allincart-email-window').stop().show().css({'margin-top': -83, 'opacity': .5}).animate({'margin-top': '-33', 'opacity': 1}, 300);
+            return false;
+        });
+
     });
 
     // переход к следующему слайду

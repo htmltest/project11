@@ -37,12 +37,12 @@
 
                 <!-- header -->
                 <div class="header">
-                    <div class="logo"><img src="images/logo.png" alt="" width="106" height="106" /></div>
+                    <div class="logo"><a href="#"><img src="images/logo.png" alt="" width="106" height="106" /></a></div>
 
                     <div class="title">Soap & Bath Boutique 100% organic</div>
 
                     <div class="header-phone">
-                        <div class="header-phone-value">(495) 749-02-53</div>
+                        <div class="header-phone-value">+7 (495) 749-02-53</div>
                         <div class="header-callback">
                             <div class="header-callback-text">Перезвонить вам?<br /><a href="#" class="header-callback-link">Введите</a> номер телефона</div>
                         </div>
@@ -58,11 +58,11 @@
                                 <div class="product-quick-item">
                                     <table>
                                         <tr>
-                                            <td class="product-quick-item-photo"><img src="files/product-quick.jpg" alt="" width="44" height="44" /></td>
+                                            <td class="product-quick-item-photo"><a href="#"><img src="files/product-quick.jpg" alt="" width="44" height="44" /></a></td>
                                             <td class="product-quick-item-content">
                                                 <table>
                                                     <tr>
-                                                        <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
+                                                        <td class="product-quick-item-name"><a href="#">Динамический увлажняющий крем для лица</a> <span>(1 шт.)</span></td>
                                                         <td class="product-quick-item-cost">650 р.</td>
                                                     </tr>
                                                 </table>
@@ -73,11 +73,11 @@
                                 <div class="product-quick-item">
                                     <table>
                                         <tr>
-                                            <td class="product-quick-item-photo"><img src="files/header-cart-1.jpg" alt="" width="44" height="44" /></td>
+                                            <td class="product-quick-item-photo"><a href="#"><img src="files/header-cart-1.jpg" alt="" width="44" height="44" /></a></td>
                                             <td class="product-quick-item-content">
                                                 <table>
                                                     <tr>
-                                                        <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
+                                                        <td class="product-quick-item-name"><a href="#">Динамический увлажняющий крем для лица</a> <span>(1 шт.)</span></td>
                                                         <td class="product-quick-item-cost">350 р.</td>
                                                     </tr>
                                                 </table>
@@ -88,11 +88,11 @@
                                 <div class="product-quick-item">
                                     <table>
                                         <tr>
-                                            <td class="product-quick-item-photo"><img src="files/header-cart-2.jpg" alt="" width="44" height="44" /></td>
+                                            <td class="product-quick-item-photo"><a href="#"><img src="files/header-cart-2.jpg" alt="" width="44" height="44" /></a></td>
                                             <td class="product-quick-item-content">
                                                 <table>
                                                     <tr>
-                                                        <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
+                                                        <td class="product-quick-item-name"><a href="#">Динамический увлажняющий крем для лица</a> <span>(1 шт.)</span></td>
                                                         <td class="product-quick-item-cost">200 р.</td>
                                                     </tr>
                                                 </table>
@@ -103,11 +103,11 @@
                                 <div class="product-quick-item">
                                     <table>
                                         <tr>
-                                            <td class="product-quick-item-photo"><img src="files/header-cart-3.jpg" alt="" width="44" height="44" /></td>
+                                            <td class="product-quick-item-photo"><a href="#"><img src="files/header-cart-3.jpg" alt="" width="44" height="44" /></a></td>
                                             <td class="product-quick-item-content">
                                                 <table>
                                                     <tr>
-                                                        <td class="product-quick-item-name">Динамический увлажняющий крем для лица <span>(1 шт.)</span></td>
+                                                        <td class="product-quick-item-name"><a href="#">Динамический увлажняющий крем для лица</a> <span>(1 шт.)</span></td>
                                                         <td class="product-quick-item-cost">100 р.</td>
                                                     </tr>
                                                 </table>
@@ -197,15 +197,27 @@
                             <div class="cabinet-form">
                                 <form action="#" method="post">
                                     <div class="order-form-row">
-                                        <div class="order-form-label">Город</div>
+                                        <div class="order-form-label">Выбор города</div>
+                                        <div class="order-form-select">
+                                            <input type="hidden" name="city" value="1" />
+                                            <div>Москва</div>
+                                            <ul>
+                                                <li class="active" rel="1">Москва</li>
+                                                <li rel="2">Санкт-Петербург</li>
+                                                <li rel="0">Другой город</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="order-form-row order-form-row-other">
+                                        <div class="order-form-label">Введите город</div>
                                         <div class="order-form-input">
-                                            <input type="text" name="city" value="Воронеж" />
+                                            <input type="text" name="other" value="" />
                                         </div>
                                     </div>
                                     <div class="order-form-row">
                                         <div class="order-form-label">Адрес</div>
                                         <div class="order-form-input">
-                                            <input type="text" name="address" value="Кукуевская ул. 12, кв. 45" />
+                                            <input type="text" name="address" value="" />
                                         </div>
                                     </div>
                                     <div class="order-form-row">
