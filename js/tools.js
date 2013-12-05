@@ -50,6 +50,43 @@ var availableCities = [
             return false;
         });
 
+        // заказ обратного звонка
+        $('.header-callback-link').click(function() {
+            $('.consultant-window').stop(true, true);
+            if ($('.consultant-window:visible').length == 1) {
+                $('.consultant-window').stop().fadeOut();
+            } else {
+                $('.consultant-window-form').show();
+                $('.consultant-window-send').hide();
+                $('.consultant-input input').val('');
+                $('.consultant-window').stop().show().css({'top': 82, 'opacity': .5}).animate({'top': 32, 'opacity': 1}, 300);
+            }
+            return false;
+        });
+
+        $('.consultant-close').click(function() {
+            $('.consultant-window').fadeOut();
+            return false;
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.header-callback').length == 0) {
+                $('.consultant-window').fadeOut();
+            }
+        });
+
+        $('.consultant-window-form form').validate({
+            messages: {
+                name: 'Это обязательное поле!',
+                phone: 'Это обязательное поле!'
+            },
+            submitHandler: function(form) {
+                // здесь можно вставить обращение к скрипту, который отправит сообщение о заказе обратного звонка
+                $('.consultant-window-form').hide();
+                $('.consultant-window-send').show();
+            }
+        });
+
         // быстрый заказ
         if ($('.product-quick').length > 0) {
             $('.product-side-order-link a').click(function() {

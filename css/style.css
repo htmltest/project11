@@ -47,6 +47,20 @@ img {border:none}
 .header-callback-link {color:#d14d0f}
 .header-callback-link:hover {color:#d78a65}
 
+.consultant-window {display:none; position:absolute; left:-127px; top:32px; z-index:8; width:304px; height:286px; background:url(../images/consultant-window.png)}
+.consultant-close {display:block; position:absolute; right:31px; top:37px; width:14px; height:15px; background:url(../images/window-close.png)}
+.consultant-window-form {padding:54px 53px 0 53px}
+.consultant-window-form form {margin:0; padding:0}
+.consultant-window-title {padding:0 0 5px 0; font-size:12px; color:#7b6152}
+.consultant-input {position:relative; padding:0 0 12px 0}
+.consultant-input input {border:1px solid #c8c8c8; height:20px; padding:8px 9px 9px 9px; width:178px; color:#4d4643; font:bold 14px/20px arial, helvetica, sans-serif; vertical-align:top; background:#fff url(../images/input.png) no-repeat; margin:0; outline:none}
+.consultant-input input.error {border-color:#d57244}
+.consultant-input label {display:block; position:absolute; height:32px; padding:0 14px; font-size:12px; line-height:32px; color:#fff; background:#d57244; right:0; top:-44px}
+.consultant-input label:after {content:''; display:block; width:11px; height:6px; position:absolute; bottom:-6px; right:24px; background:url(../images/product-input-error.png)}
+.consultant-window-ctrl {width:100%; padding:15px 0 0 0}
+.consultant-window-ctrl:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.consultant-window-send {display:none; padding:136px 0 0 0; text-align:center; font-size:18px; color:#7b6152}
+
 .header-cart {position:absolute; right:0; top:41px; width:189px; height:70px; background:url(../images/header-cart.png) no-repeat}
 .header-cart-full {background-position:left -70px}
 .header-cart-title {padding:26px 0 0 79px}
